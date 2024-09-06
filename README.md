@@ -1,6 +1,6 @@
 Proyecto de prueba técnica
 
-Este repositorio contiene un proyecto de ejemplo que incluye una API construida con la arquitectura Onion y un cliente web interactivo. La solución está dividida en dos proyectos principales:
+Este repositorio contiene un proyecto que incluye una API construida con la arquitectura Onion y un cliente web interactivo. La solución está dividida en dos proyectos principales:
 
 API: Una API RESTful desarrollada con ASP.NET Core que utiliza la arquitectura Onion, el patrón Unit of Work, el patrón Repository, CQRS, Entity Framework Core y Dapper para la gestión de datos y el consumo de procedimientos almacenados.
 Cliente Web: Una aplicación web construida con HTML5, JavaScript, jQuery, AJAX, Bootstrap 5, DataTables.js, SweetAlert y FontAwesome Icons.
