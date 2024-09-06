@@ -1,0 +1,62 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Estilos del tooltip */
+.tooltipp {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+    .tooltipp .tiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 3px;
+        padding: 6px 0;
+        position: absolute;
+        z-index: 1;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        .tooltipp .tiptext::after {
+            content: "";
+            position: absolute;
+            border-width: 5px;
+            border-style: solid;
+        }
+
+    .tooltipp:hover .tiptext {
+        visibility: visible;
+    }
+
+    .tooltipp.top .tiptext {
+        margin-left: -60px;
+        bottom: 150%;
+        left: 50%;
+    }
+
+        .tooltipp.top .tiptext::after {
+            margin-left: -5px;
+            top: 100%;
+            left: 50%;
+            border-color: #2E2E2E transparent transparent transparent;
+        }

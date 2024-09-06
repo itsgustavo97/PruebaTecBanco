@@ -1,0 +1,223 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Movimientos de tarjetas";
+}
+<h3>@ViewData["Title"]</h3>
+
+
+<button type="button" class="btn btn-dark my-3" data-bs-toggle="modal" data-bs-target="#NuevaTarjetaModal">
+    Nueva tarjeta
+</button>
+
+<div id="divForTableTarjetas"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="NuevaTarjetaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nueva tarjeta</h5>
+                <button type="button" class="btn-close" onclick="ClearInputsNuevaTarjeta()" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdTarjeta" value="0" />
+                <div class="mb-3">
+                    <label for="TitularTarjeta" class="form-label">Titular</label>
+                    <input type="text" class="form-control" name="TitularTarjeta" id="TitularTarjeta" placeholder="Titular" />
+                </div>
+                <div class="mb-3">
+                    <label for="NumeroTarjeta" class="form-label">Numero</label>
+                    <input type="text" class="form-control" name="NumeroTarjeta" id="NumeroTarjeta" placeholder="Numero" />
+                </div>
+                <div class="mb-3">
+                    <label for="FechaVencimientoTarjeta" class="form-label">Fecha vencimiento</label>
+                    <input type="date" class="form-control" name="FechaVencimientoTarjeta" id="FechaVencimientoTarjeta" placeholder="Fecha vencimiento" />
+                </div>
+                <div class="mb-3">
+                    <label for="LimiteTarjeta" class="form-label">Limite</label>
+                    <input type="number" class="form-control" name="LimiteTarjeta" id="LimiteTarjeta" placeholder="Limite" />
+                </div>
+                <div class="mb-3">
+                    <label for="PorcentajePagoMinimoTarjeta" class="form-label">Porcentaje pago minimo</label>
+                    <input type="number" class="form-control" name="PorcentajePagoMinimoTarjeta" id="PorcentajePagoMinimoTarjeta" placeholder="Porcentaje pago minimo" />
+                </div>
+                <div class="mb-3">
+                    <label for="PorcentajeInteresTarjeta" class="form-label">Porcentaje interes</label>
+                    <input type="number" class="form-control" name="PorcentajeInteresTarjeta" id="PorcentajeInteresTarjeta" placeholder="Porcentaje interes" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="ClearInputsNuevaTarjeta()" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark" id="btnGuardarNuevaTarjeta" onclick="PostNuevaTarjeta()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal nueva compra -->
+<div class="modal fade" id="NuevaCompraModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nueva compra</h5>
+                <button type="button" class="btn-close" onclick="ClearInputsNuevaCompra()" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdTarjetaCompra" value="0" />
+                <div class="mb-3">
+                    <label for="FechaCompra" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" name="FechaCompra" id="FechaCompra" placeholder="Fecha" />
+                </div>
+                <div class="mb-3">
+                    <label for="DescripcionCompra" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" name="DescripcionCompra" id="DescripcionCompra" placeholder="Descripción" />
+                </div>
+                <div class="mb-3">
+                    <label for="MontoCompra" class="form-label">Monto</label>
+                    <input type="number" class="form-control" name="MontoCompra" id="MontoCompra" placeholder="Monto" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="ClearInputsNuevaCompra()" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark" onclick="PostNuevaCompra()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal nuevo pago -->
+<div class="modal fade" id="NuevoPagoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nuevo pago</h5>
+                <button type="button" class="btn-close" onclick="ClearInputsNuevoPago()" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdTarjetaPago" value="0" />
+                <div class="mb-3">
+                    <label for="FechaPago" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" name="FechaPago" id="FechaPago" placeholder="Fecha" />
+                </div>
+                <div class="mb-3">
+                    <label for="MontoPago" class="form-label">Monto</label>
+                    <input type="number" class="form-control" name="MontoPago" id="MontoPago" placeholder="Monto" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="ClearInputsNuevoPago()" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark" onclick="PostNuevoPago()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal historial de transacciones del mes -->
+<div class="modal fade" id="HistorialTransaccionesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Transacciones del mes</h5>
+                <button type="button" class="btn-close ClearModalHistorialTransacciones" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdTarjetaHistorialTransacciones" value="0" />
+                <div id="divForTableHistorialTransaccionesDelMes"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary ClearModalHistorialTransacciones" data-bs-dismiss="modal">Cerrar</button>
+                @* <button type="button" class="btn btn-dark" onclick="PostNuevoPago()">Guardar</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal lista de compras del mes -->
+<div class="modal fade" id="ListaComprasMesModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Compras del mes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdTarjetaListaCompras" value="0" />
+                <div id="divForTableListaComprasDelMes"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                @* <button type="button" class="btn btn-dark" onclick="PostNuevoPago()">Guardar</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal estado de cuenta -->
+<div class="modal fade" id="EstadoCuentaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Estado de cuenta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="IdTarjetaEstadoCuenta" value="0" />
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="card-title" id="TitularEstadoCuenta">Titular</h5>
+                                <h6 class="card-subtitle mb-2 text-muted" id="NumeroEstadoCuenta">Numero</h6>
+                                <h6 class="card-subtitle mb-2 text-muted" id="FechaVencimientoEstadoCuenta">Fecha vencimiento</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="card-title" id="PorcentajePagoMinimoEstadoCuenta">Pago minimo %</h5>
+                                <h5 class="card-title" id="PorcentajeInteresEstadoCuenta">Interes %</h5>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" id="LimiteEstadoCuenta">Limite</li>
+                            <li class="list-group-item" id="SaldoDispoEstadoCuenta">Saldo disponible</li>
+                            <li class="list-group-item" id="SaldoActualEstadoCuenta">Saldo actual</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="py-2" id="divForTableListaComprasDelMesEstadoCuenta"></div>
+                <h6 class="card-subtitle my-2 text-muted" id="TotalComprasMes">Saldo total de compras del mes</h6>
+                <h6 class="card-subtitle my-2 text-muted" id="InteresBonificable">Interes bonificable</h6>
+                <h6 class="card-subtitle my-2 text-muted" id="CuotaMinimaEstadoCuenta">Cuota minima</h6>
+                <h5 class="card-title" id="TotalPagarEstadoCuenta">Total a pagar</h5>
+                <h6 class="card-subtitle my-2 text-muted" id="TotalMasInteresBonificable">Total + interes bonificable</h6>
+                <hr />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-dark" id="btnExportPdf" onclick="ExportarEstadoCuentaPdf()"><i class="fa-solid fa-file-pdf"></i>Exportar PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal preview archivo PDF -->
+<div class="modal fade" id="PreviewPdfModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Vista previa de evidencia</h5>
+                <button type="button" class="btn-close btnClearModalPreviewImagen" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="embedPdfEvidencia">
+                    <embed type="" src="" id="pdfPreviewEvidencia" width="100%" height="800" class="mx-auto" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btnClearModalPreviewImagen" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/Tarjetas.js"></script>

@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "295cf1a7-1eba-4c01-b211-1422b03c1ee2",
+		"name": "PruebaTecNET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15246640"
+	},
+	"item": [
+		{
+			"name": "ObtenerTarjetas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Tarjeta/ObtenerTarjetasAsync",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Tarjeta",
+						"ObtenerTarjetasAsync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NuevaTarjeta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titular\": \"Carmen Lopez\",\r\n  \"numero\": \"4699832067697476\",\r\n  \"fechaVencimiento\": \"2024-09-05T23:50:03.080Z\",\r\n  \"limite\": 500,\r\n  \"porcentajePagoMinimo\": 5,\r\n  \"porcentajeInteres\": 25\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5112/api/Tarjeta/CrearNuevaTarjetaAsync",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Tarjeta",
+						"CrearNuevaTarjetaAsync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerTarjetaPorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Tarjeta/ObtenerTarjetaPorIdAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Tarjeta",
+						"ObtenerTarjetaPorIdAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearNuevaCompra",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tipo\": \"Compra\",\r\n  \"fecha\": \"2024-09-05T23:56:45.479Z\",\r\n  \"descripcion\": \"Laptop HP 14inch\",\r\n  \"monto\": 300,\r\n  \"idTarjeta\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/CrearNuevaCompraAsync",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"CrearNuevaCompraAsync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearNuevoPago",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tipo\": \"Pago\",\r\n  \"fecha\": \"2024-09-05T23:56:45.479Z\",\r\n  \"descripcion\": \"Abono\",\r\n  \"monto\": 25,\r\n  \"idTarjeta\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/CrearNuevoPagoAsync",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"CrearNuevoPagoAsync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerHistorialTransaccionesPorTarjeta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/ObtenerHistorialTransaccionesPorTarjetaAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"ObtenerHistorialTransaccionesPorTarjetaAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerComprasDelMesPorTarjeta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/ObtenerComprasDelMesPorTarjetaAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"ObtenerComprasDelMesPorTarjetaAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerarEstadoDeCuentaPorTarjeta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/GenerarEstadoDeCuentaPorTarjetaAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"GenerarEstadoDeCuentaPorTarjetaAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExportarPdfEstadoDeCuentaPorTarjeta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/ExportarPdfEstadoDeCuentaPorTarjetaAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"ExportarPdfEstadoDeCuentaPorTarjetaAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExportarExcelComprasMesPorTarjeta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5112/api/Movimiento/ExportarExcelComprasDelMesPorTarjetaAsync/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5112",
+					"path": [
+						"api",
+						"Movimiento",
+						"ExportarExcelComprasDelMesPorTarjetaAsync",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

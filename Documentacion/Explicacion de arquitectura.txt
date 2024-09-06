@@ -1,0 +1,8 @@
+Documentación del proyecto PruebaTec
+
+Se trata de una proyecto en Visual Studio desarrollado en C# con .NET Core y Entity Framework core principalmente, usando un conjunto de patrones de arquitectura, una arquitectura de nombre Onion Architecture en inglés cuya traducción es "Arquitectura cebolla", como tal esta distribuida en diferentes capas, esta arquitectura cumple con los principios SOLID ya que es altamente mantenible debido a que esta basada en la inversión de dependencias, cada capa se desacopla fácilmente y se comunican a través de interfaces.
+Específicamente en esta solución se usan patrones como Unit of work, Repository (de forma generica), CQRS para separar escrituras y lecturas cumpliendo asi el principio de Separación de responsabilidades, Automapper para agilizar el llenado de propiedades de entidades, Middleware y manejo de excepciones, fluent validation para realizar validaciones respectivas a los modelos, también Dapper para consumir procedimientos almacenados, Swagger para la documentación implícita dentro de la api.
+Para el caso de las exportaciones de archivos PDF se usó QuestPDF una librería que gracias a su licencia Comunity permite generar estos archivos fácilmente además de permitir también diseñar a base de código.
+Para el caso de los archivos Excel se usó ClosedXML el cual fácilmente permite estilizar y generar archivos Excel.
+
+En el cliente web se usó HTML5(parcialmente razor), JavaScript, JQuery, AJAX (para peticiones Http a la api), Bootstrap 5 además de librerías como SweetAlert, iconos de FontAwesome y Datatables.js.

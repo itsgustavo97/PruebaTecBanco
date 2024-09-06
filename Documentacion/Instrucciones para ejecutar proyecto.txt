@@ -1,0 +1,26 @@
+Instrucciones para ejecutar proyecto PruebaTec de Gustavo Pineda:
+
+Para comenzar aclaro que usé Code first con EF core para la facilidad de evualuacion del proyecto.
+
+Primero verificar y cambiar de ser necesario la cadena de conexión en appsettings.json.
+
+Gracias a una instrucción en Program.cs no es necesario hacer más que descargar el proyecto, verificar que el proyecto dentro de la carpeta Api llamado WebApi sea el principal y ejecutarlo, luego dar clic derecho sobre el otro proyecto llamado WebClient dentro de la carpeta Presentation, en la opción Depurar, luego elegir Iniciar nueva instancia.
+Con esto automáticamente al ejecutarse, se crea la base de datos y sus tablas en SQL Server.
+
+Si por algún motivo imprevisto lo anterior no funcionara, a continuación seguir los pasos de abajo.
+
+Con Code first fácilmente se definen las clases de las entidades para crear la base de datos y sus tablas.
+De esta manera solo se necesita ejecutar un par de comandos para crear la base de datos y sus tablas a partir de las clases o entidades definidas en c#.
+
+El primer comando es:
+Add-Migration InitialCreate
+Con esto Visual Studio creará un archivo con todo lo necesario para la creación de la base de datos en SQL Server.
+
+El segundo comando es:
+Update-Database
+Hecho esto, El archivo anterior se ejecuta como si estuviésemos en SQL Server.
+
+Para más información dejo este enlace oficial de Microsoft:
+https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli
+
+Para el procedimiento almacenado si será necesario abrir SQL Server Management Studio(SSMS) para ejecutar el contenido del archivo (script) que dejaré en una carpeta del proyecto llamada DB_StoredProcedure.
