@@ -22,6 +22,9 @@ namespace Application.Features.FeatureTransaccion.Commands.NuevoPago
             var tarjeta = await _unitOfWork.genericRepository<Tarjeta>().GetByIdAsync(request.IdTarjeta);
             if(request.Monto > tarjeta.SaldoActual)
                 throw new BadRequestException("El monto de pago es mayor al saldo actual utilizado");
+            var fechaActual = DateTime.Now;
+            request.Fecha = request.Fecha.AddHours(fechaActual.Hour);
+            request.Fecha = request.Fecha.AddMinutes(fechaActual.Minute);
             await _unitOfWork.genericRepository<Transaccion>().InsertAsync(_mapper.Map<Transaccion>(request));
             if (await _unitOfWork.SaveChangesAsync() < 1)
                 throw new BadRequestException("No se pudo guardar");
