@@ -4,7 +4,7 @@ Para comenzar aclaro que usé Code first con EF core para la facilidad de evualu
 
 Primero verificar y cambiar de ser necesario la cadena de conexión en appsettings.json.
 
-Gracias a una instrucción en Program.cs no es necesario hacer más que descargar el proyecto, verificar que el proyecto dentro de la carpeta Api llamado WebApi sea el principal y ejecutarlo, luego dar clic derecho sobre el otro proyecto llamado WebClient dentro de la carpeta Presentation, en la opción Depurar, luego elegir Iniciar nueva instancia.
+Gracias a una instrucción en Program.cs no es necesario hacer más que descargar el proyecto, verificar que el proyecto dentro de la carpeta Api llamado WebApi sea el principal y ejecutarlo, también verificar en SQL Server que la base de datos se creó(de lo contrario, detener y volver a ejecutar la api), luego dar clic derecho sobre el otro proyecto llamado WebClient dentro de la carpeta Presentation, en la opción Depurar, luego elegir Iniciar nueva instancia.
 Con esto automáticamente al ejecutarse, se crea la base de datos y sus tablas en SQL Server.
 
 Si por algún motivo imprevisto lo anterior no funcionara, a continuación seguir los pasos de abajo.
