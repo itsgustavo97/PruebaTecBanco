@@ -24,3 +24,4 @@ Para más información dejo este enlace oficial de Microsoft:
 https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli
 
 Para el procedimiento almacenado si será necesario abrir SQL Server Management Studio(SSMS) para ejecutar el contenido del archivo (script) que dejaré en una carpeta del proyecto llamada DB_StoredProcedure.
+También he dejado la colección de POSTMAN para probar los endpoints de la api en esta carpeta.
