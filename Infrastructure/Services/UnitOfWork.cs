@@ -17,6 +17,7 @@ namespace Infrastructure.Services
         private SqlConnection conn;
         private readonly IConfiguration config;
         private IRepositoryTransaccion repositoryTransaccion;
+        private IRepositoryUsuario repositoryUsuario;
 
         public UnitOfWork(ApplicationDBContext db, IConfiguration config)
         {
@@ -25,6 +26,7 @@ namespace Infrastructure.Services
         }
 
         public IRepositoryTransaccion RepositoryTransaccion => repositoryTransaccion ??= new RepositoryTransaccion(GetConnectionSql());
+        public IRepositoryUsuario RepositoryUsuario => repositoryUsuario ??= new RepositoryUsuario(GetConnectionSql());
 
         public void Dispose() => db.Dispose();
         public async Task<IDbContextTransaction> BeginTransactionAsync() =>

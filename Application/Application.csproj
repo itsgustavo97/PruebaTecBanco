@@ -13,6 +13,7 @@
     <PackageReference Include="FluentValidation" Version="11.5.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.14" />
   </ItemGroup>
 
@@ -22,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Features\FeatureTransaccion\Commands\CrearTransaccion\" />
-    <Folder Include="Dtos\" />
     <Folder Include="Features\FeatureTransaccion\Queries\ObtenerTransaccionPorId\" />
   </ItemGroup>
 

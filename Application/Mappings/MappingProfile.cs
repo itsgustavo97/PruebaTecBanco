@@ -5,6 +5,8 @@ using Application.Features.FeatureTransaccion.Commands.NuevaCompra;
 using Application.Features.FeatureTransaccion.Commands.NuevoPago;
 using Application.Features.FeatureTransaccion.Dto;
 using Application.Features.FeatureTransaccion.Vm;
+using Application.Features.FeatureUsuario.Commands.CrearUsuario;
+using Application.Features.FeatureUsuario.Commands.ModificarUsuario;
 using AutoMapper;
 using Domain;
 
@@ -16,6 +18,9 @@ namespace Application.Mappings
         {
             CreateMap<Tarjeta, TarjetaDto>();
             CreateMap<CrearTarjetaCommand, Tarjeta>();
+
+            CreateMap<CrearUsuarioCommand, Usuario>();
+            CreateMap<ModificarUsuarioCommand, Usuario>();
 
             CreateMap<Transaccion, TransaccionDto>();
             CreateMap<Transaccion, TransaccionVM>();

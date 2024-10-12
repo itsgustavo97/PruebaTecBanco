@@ -7,6 +7,7 @@ namespace Application.Contracts.Infrastructure
     public interface IUnitOfWork : IDisposable
     {
         IRepositoryTransaccion RepositoryTransaccion { get; }
+        IRepositoryUsuario RepositoryUsuario { get; }
         IRepositoryGeneric<T> genericRepository<T>() where T : BaseModel;
         Task<int> SaveChangesAsync();
         Task<IDbContextTransaction> BeginTransactionAsync();
